@@ -1,0 +1,39 @@
+@import '../../../../styles.scss';
+
+.toast.success {
+  background: $success-gradient;
+}
+
+.toast.error {
+  background: $error-gradient;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: $close-btn-size;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: $progress-height;
+  background: $progress-color;
+  width: 100%;
+  animation-name: progressAnim;
+  animation-timing-function: linear;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progressAnim {
+  from { width: 100%; }
+  to { width: 0%; }
+}

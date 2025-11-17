@@ -1,0 +1,106 @@
+// ==========================
+// Global Styles
+// ==========================
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  background: $gradient-bg;
+}
+
+form button {
+  width: 100%;
+  padding: $button-padding;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $button-radius;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+form input {
+  width: 100%;
+  padding: $input-padding;
+  margin-bottom: 10px;
+  border: $input-border;
+  border-radius: $button-radius;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+.error {
+  color: $error-color;
+  font-size: 12px;
+}
+
+.card {
+  background: #fff;
+  padding: $card-padding;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000; // above all
+  pointer-events: all; // prevent clicking anything below
+}
+
+.toast-wrapper {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: $toast-gap;
+  z-index: $toast-z-index;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  min-width: $toast-min-width;
+  max-width: $toast-max-width;
+  padding: $toast-padding;
+  border-radius: $toast-radius;
+  color: #fff;
+  font-weight: $toast-font-weight;
+  display: flex;
+  justify-content: center;  // center horizontally
+  align-items: center;      // center vertically
+  text-align: center;       // ensure multi-line text is centered
+  background: rgba(0, 0, 0, $toast-bg-opacity);
+  box-shadow: $toast-shadow;
+  overflow: hidden;
+  pointer-events: auto;
+  animation: slideDown $toast-animation;
+  gap: $toast-gap;          // optional, if spinner + text
+}
+
+@keyframes slideIn {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

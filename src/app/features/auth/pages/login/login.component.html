@@ -1,0 +1,29 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>Email:</label>
+        <input type="email" formControlName="email" />
+      </div>
+
+      <div>
+        <label>Password:</label>
+        <input type="password" formControlName="password" />
+      </div>
+
+      <button type="submit" [disabled]="loading">
+        Login
+      </button>
+    </form>
+
+    <p class="register-link">
+      Don't have account? <a [routerLink]="['/register']">Register</a>
+    </p>
+  </div>
+</div>
+
+<div class="loading-overlay" *ngIf="loading">
+  <app-toast-spinner [message]="'Logging in...'" [visible]="loading"></app-toast-spinner>
+</div>
