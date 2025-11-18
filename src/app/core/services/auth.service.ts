@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap, BehaviorSubject, throwError, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CookieService } from 'ngx-cookie-service';
-import { ResponseMessage } from '../models/response-message.model';
+import { ResponseMessage } from '../models/response.model';
 
 @Injectable({
   providedIn: 'root',

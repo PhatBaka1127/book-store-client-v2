@@ -1,9 +1,7 @@
 // toast.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ResponseMessage } from '../models/response-message.model';
-import { ErrorResponse } from '../models/error-response.model';
-
+import { ErrorResponse, ResponseMessage } from '../models/response.model';
 export interface ToastMessage {
   id: number;
   text: string;

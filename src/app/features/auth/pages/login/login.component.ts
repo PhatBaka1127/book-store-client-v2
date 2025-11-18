@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { delay } from 'rxjs';
-import { ErrorResponse } from 'src/app/core/models/error-response.model';
-import { ResponseMessage } from 'src/app/core/models/response-message.model';
+import { ErrorResponse, ResponseMessage } from 'src/app/core/models/response.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 
