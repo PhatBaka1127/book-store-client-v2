@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 @Component({
@@ -28,13 +29,17 @@ export class RegisterComponent {
 
     this.loading = true;
 
-    this.authService.register(this.registerForm.value).subscribe({
+    this.authService.register(this.registerForm.value)
+    .pipe(delay(5000))
+    .subscribe({
       next: (res) => {
+        this.loading = false;
         console.log('Register successfully', res);
         this.toastService.showMessage(res.message, res.result, 2000);
         this.router.navigate(['/login']);
       },
       error: (res) => {
+        this.loading = false;
         console.error('Something went wrong', res);
         this.toastService.showMessage(res.error.message, res.error.result, 2000);
         this.loading = false;
