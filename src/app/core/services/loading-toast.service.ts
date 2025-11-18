@@ -11,7 +11,6 @@ export class LoadingToastService {
   constructor(private toastr: ToastrService) {}
 
   show(message: string = 'Loading...') {
-    // Prevent multiple toasts stacking
     if (this.currentToast) return;
 
     this.currentToast = this.toastr.info(

@@ -1,39 +1,61 @@
+@import '../../../../../styles.scss';
+
 .login-wrapper {
   display: flex;
-  justify-content: center;  
-  align-items: center;      
-  height: 100vh;            
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   width: 100%;
 }
 
 .login-container {
+  @extend %card-global; // reuse global card style
   width: 320px;
-  padding: 30px;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-label {
-  display: block;
-  margin: 5px 0;
-}
+  form {
+    div {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
 
-p.register-link {
-  text-align: center;
-  margin-top: 10px;
-}
+    label {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
 
-p.register-link a {
-  color: #1976d2;
-  text-decoration: none;
-}
+    input,
+    select {
+      @extend %input-global; // reuse global input
+    }
 
-p.register-link a:hover {
-  text-decoration: underline;
+    button {
+      @extend %button-global; // reuse global button
+      margin-top: 10px;
+    }
+
+    .error {
+      @extend %error-global; // reuse global error
+      margin-top: -5px;
+    }
+  }
+
+  p.register-link {
+    text-align: center;
+    margin-top: 10px;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

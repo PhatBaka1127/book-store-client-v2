@@ -8,7 +8,8 @@ html, body {
   background: $gradient-bg;
 }
 
-form button {
+// _placeholders.scss
+%button-global {
   width: 100%;
   padding: $button-padding;
   background-color: $primary-color;
@@ -24,7 +25,7 @@ form button {
   }
 }
 
-form input {
+%input-global {
   width: 100%;
   padding: $input-padding;
   margin-bottom: 10px;
@@ -42,7 +43,7 @@ form input {
   font-size: 12px;
 }
 
-.card {
+%card-global {
   background: #fff;
   padding: $card-padding;
   border-radius: $card-radius;
@@ -93,6 +94,14 @@ form input {
   pointer-events: auto;
   animation: slideDown $toast-animation;
   gap: $toast-gap;          // optional, if spinner + text
+  background-color: yellowgreen;
+}
+
+.toast.success {
+  background-color: #4caf50;
+}
+.toast.error {
+  background-color: #f44336;
 }
 
 @keyframes slideIn {
@@ -115,4 +124,9 @@ footer {
   padding: 20px;
   color: white;
   text-align: center;
+}
+
+%error-global {
+  color: $error-color;
+  font-size: 12px;
 }
