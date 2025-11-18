@@ -1,0 +1,12 @@
+<nav *ngIf="showNavbar" class="top-navbar">
+  <div class="logo">MyApp</div>
+  <div class="user-menu">
+    <span class="username" (click)="toggleDropdown()">{{ user?.email }}</span>
+    <div class="dropdown" *ngIf="dropdownOpen">
+      <a [routerLink]="['/cart']">Cart</a>
+      <a [routerLink]="['/orders']">Orders</a>
+      <a [routerLink]="['/profile']">Profile</a>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

@@ -40,20 +40,19 @@ export class LoginComponent {
       return;
     }
 
-this.loading = true; // show spinner
-this.authService.login(this.loginForm.value).subscribe({
-  next: (res: ResponseMessage<any>) => {
-    this.toastService.showFromResponse(res); 
-    this.loading = false; // hide spinner
+    this.loading = true; // show spinner
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res: ResponseMessage<any>) => {
+        this.toastService.showFromResponse(res);
+        this.loading = false; // hide spinner
 
-    if (res.value?.role === 1) this.router.navigate(['/dashboard']);
-    else this.router.navigate(['/home']);
-  },
-  error: (err: ErrorResponse) => {
-    this.toastService.showFromResponse(err); 
-    this.loading = false; // hide spinner
-  },
-});
-
+        if (res.value?.role === 1) this.router.navigate(['/dashboard']);
+        else this.router.navigate(['/home']);
+      },
+      error: (err: ErrorResponse) => {
+        this.toastService.showFromResponse(err);
+        this.loading = false; // hide spinner
+      },
+    });
   }
 }
