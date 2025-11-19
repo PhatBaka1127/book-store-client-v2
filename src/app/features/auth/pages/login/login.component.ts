@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
-import { LoginResponse } from "src/app/core/models/auth.model";
+import { AuthResponse } from "src/app/core/models/auth.model";
 import {
   ErrorResponse,
   ResponseMessage,
@@ -44,7 +44,7 @@ export class LoginComponent {
 
     this.loading = true; // show spinner
     this.authService.login(this.loginForm.value).subscribe({
-      next: (res: ResponseMessage<LoginResponse>) => {
+      next: (res: ResponseMessage<AuthResponse>) => {
         console.log("Login success:", res);
 
         const value = res.value;

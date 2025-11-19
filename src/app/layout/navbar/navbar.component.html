@@ -1,5 +1,5 @@
 <nav *ngIf="showNavbar" class="top-navbar">
-  <div class="logo">MyApp</div>
+  <a class="logo" [routerLink]="['books/list-book']">BOOK STORE</a>
 
   <div class="user-menu">
     <a class="cart-link" [routerLink]="['/cart']">🛒</a>

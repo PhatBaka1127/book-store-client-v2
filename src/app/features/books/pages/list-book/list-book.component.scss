@@ -3,7 +3,7 @@
 .home-container {
   @extend %container;
   max-width: 90%;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 .book-list {
@@ -22,7 +22,7 @@
   margin: 0 auto;
   justify-content: center;
   margin-bottom: 20px;
-  width: 500px;
+  width: 300px;
 
   input {
     @extend %input-global;

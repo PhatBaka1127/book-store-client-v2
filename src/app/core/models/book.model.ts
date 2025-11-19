@@ -1,10 +1,10 @@
 export interface BookDTO {
   name: string;
   description?: string;
-  unitPrice?: number;
-  stock?: number;
-  status?: number;
-  categoryId?: number;
+  unitPrice: number;
+  stock: number;
+  status: number;
+  categoryId: number;
 }
 
 export interface BookResponse extends BookDTO {

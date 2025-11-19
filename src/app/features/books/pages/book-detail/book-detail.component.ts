@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import { BookResponse } from 'src/app/core/models/book.model';
-import { BookService } from 'src/app/core/services/book.service';
-import { ToastService } from 'src/app/core/services/toast.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { BookResponse } from "src/app/core/models/book.model";
+import { CartItemCookie } from "src/app/core/models/cart.model";
+import { BookService } from "src/app/core/services/book.service";
+import { ToastService } from "src/app/core/services/toast.service";
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.scss'],
+  selector: "app-product-detail",
+  templateUrl: "./book-detail.component.html",
+  styleUrls: ["./book-detail.component.scss"],
 })
 export class BookDetailComponent implements OnInit {
-rateBook() {
-throw new Error('Method not implemented.');
-}
   book: BookResponse | null = null;
   userRole: number | null = null;
 
@@ -25,7 +23,7 @@ throw new Error('Method not implemented.');
   ) {}
 
   ngOnInit(): void {
-    const userCookie = this.cookieService.get('user');
+    const userCookie = this.cookieService.get("user");
     if (userCookie) {
       try {
         const user = JSON.parse(userCookie);
@@ -33,7 +31,7 @@ throw new Error('Method not implemented.');
       } catch {}
     }
 
-    const bookId = Number(this.route.snapshot.paramMap.get('id'));
+    const bookId = Number(this.route.snapshot.paramMap.get("id"));
     this.bookService.getBookById(bookId).subscribe({
       next: (res) => (this.book = res),
       error: (err) => console.error(err),
@@ -41,29 +39,35 @@ throw new Error('Method not implemented.');
   }
 
   addToCart() {
-    if (this.book) {
-      const cartCookie = this.cookieService.get('cart');
-      let cart: BookResponse[] = [];
+    if (!this.book) return;
 
-      if (cartCookie) {
-        try {
-          cart = JSON.parse(cartCookie);
-        } catch {
-          cart = [];
-        }
-      }
+    const cartCookie = this.cookieService.get("cart");
+    let cart: CartItemCookie[] = [];
 
-      const existing = cart.find((b: any) => b.id === this.book!.id);
-
-      if (existing) {
-        existing.quantity = (existing.quantity || 1) + 1;
-        this.toastService.showMessage(`Increased quantity to ${existing.quantity}`, true, 2000);
-      } else {
-        cart.push({ ...this.book, quantity: 1 });
-        this.toastService.showMessage(`Added to cart!`, true, 2000);
-      }
-
-      this.cookieService.set('cart', JSON.stringify(cart), undefined, '/');
+    try {
+      if (cartCookie) cart = JSON.parse(cartCookie);
+    } catch {
+      cart = [];
     }
+
+    const existing = cart.find((item) => item.bookId === this.book!.id);
+
+    if (existing) {
+      existing.quantity += 1;
+      this.toastService.showMessage(
+        `Increased quantity to ${existing.quantity}`,
+        true,
+        2000
+      );
+    } else {
+      cart.push({ bookId: this.book.id, quantity: 1 });
+      this.toastService.showMessage(`Added to cart!`, true, 2000);
+    }
+
+    this.cookieService.set("cart", JSON.stringify(cart), undefined, "/");
+  }
+
+  rateBook() {
+    throw new Error("Method not implemented.");
   }
 }
