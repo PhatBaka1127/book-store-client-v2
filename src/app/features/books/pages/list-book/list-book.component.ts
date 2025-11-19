@@ -17,7 +17,7 @@ export class ListBookComponent implements OnInit {
   userRole: number | null = null;
   currentPage = 1;
   totalPages = 1;
-  pageSize = 9;
+  pageSize = 20;
   totalItems = 0;
   categories: CategoryResponse[] = [];
   filter = { name: "", categoryId: "" };

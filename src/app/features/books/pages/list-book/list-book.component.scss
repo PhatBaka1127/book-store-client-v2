@@ -1,63 +1,50 @@
+@import '../../../../../styles.scss';
+
 .home-container {
-  width: 900px;
+  @extend %container;
+  max-width: 90%;
   margin: 50px auto;
-  text-align: center;
 }
 
 .book-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cột */
-  gap: 20px;
+  @extend %grid-5-col;
   justify-items: center;
-  margin-bottom: 30px;
 }
 
 .book-item {
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  background: #fff;
-  text-align: left;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button[disabled] {
-  background-color: #aaa;
-  cursor: not-allowed;
+  @extend %card-global;
+  width: auto;
+  max-width: 100%;
 }
 
 .filter-bar {
-  display: flex;
+  @extend %flex-row-gap;
+  margin: 0 auto;
   justify-content: center;
-  align-items: center;
-  gap: 15px;
   margin-bottom: 20px;
+  width: 500px;
+
+  input {
+    @extend %input-global;
+  }
+
+  select {
+    @extend %select-global;
+  }
 }
 
-.filter-bar input, .filter-bar select {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
+.pagination {
+  margin-top: 20px;
+  @extend %pagination;
+}
+
+button {
+  @extend %button-global;
+  width: auto; // override if needed
+  padding: 8px 15px;
+}
+
+button[disabled] {
+  background-color: #aaa !important;
+  cursor: not-allowed;
 }

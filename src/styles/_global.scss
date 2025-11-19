@@ -130,3 +130,55 @@ footer {
   color: $error-color;
   font-size: 12px;
 }
+
+%container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+%grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+%grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+%grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+%grid-5-col {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-row-gap {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+%pagination {
+  @extend %flex-center;
+  gap: 15px;
+}
+
+%select-global {
+  @extend %input-global;
+  appearance: none;
+}
