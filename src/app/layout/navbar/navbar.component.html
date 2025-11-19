@@ -2,7 +2,7 @@
   <a class="logo" [routerLink]="['books/list-book']">BOOK STORE</a>
 
   <div class="user-menu">
-    <a class="cart-link" [routerLink]="['/cart']">🛒</a>
+    <a class="cart-link" [routerLink]="['/orders/cart']">🛒</a>
     <span class="username" (click)="toggleDropdown()">{{ user?.email }}</span>
 
     <div class="dropdown" *ngIf="dropdownOpen">

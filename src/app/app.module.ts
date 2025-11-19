@@ -6,15 +6,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
 import { LoginComponent } from "./features/auth/pages/login/login.component";
 import { NavbarComponent } from "./layout/navbar/navbar.component";
-import { CartComponent } from "./features/cart/cart.component";
-import { CheckoutComponent } from "./features/checkout/checkout.component";
+import { CartComponent } from "./features/orders/pages/cart/cart.component";
+import { CheckoutComponent } from "./features/orders/pages/checkout/checkout.component";
 import { AuthInterceptor } from "./core/interceptors/auth.interceptor";
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CartComponent,
-    CheckoutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [
