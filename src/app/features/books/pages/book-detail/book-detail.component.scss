@@ -1,0 +1,71 @@
+@import '../../../../../styles.scss';
+
+.product-detail-container {
+  @extend %container;
+  @extend %card-global;
+
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap; // allows responsive stacking
+
+  // LEFT PANEL: image + buttons
+  .left-panel {
+    flex: 1 1 280px; // grow/shrink, min width
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .action-buttons {
+      @extend %flex-row-gap;
+
+      button {
+        @extend %button-global;
+        width: auto;
+        padding: 8px 14px;
+      }
+    }
+  }
+
+  // RIGHT PANEL: info
+  .right-panel {
+    flex: 2 1 400px; // grow/shrink, min width
+    text-align: left;
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 26px;
+      color: #333;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 16px;
+      color: #555;
+
+      strong {
+        color: #222;
+      }
+    }
+  }
+
+  // MOBILE: stack panels
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .right-panel {
+      text-align: center;
+    }
+  }
+}

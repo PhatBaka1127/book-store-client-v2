@@ -84,11 +84,11 @@ export class ListBookComponent implements OnInit {
   }
 
   goToCreateBook() {
-    this.router.navigate(["/create-book"]);
+    this.router.navigate(["/books/create-book"]);
   }
 
   goToDetail(bookId: number) {
-    this.router.navigate(["/book", bookId]);
+    this.router.navigate(["/books/book-detail", bookId]);
   }
 
   applyFilter() {
