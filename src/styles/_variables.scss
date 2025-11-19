@@ -1,6 +1,7 @@
 $primary-color: #1976d2;
 $primary-hover: #1565c0;
 $error-color: #f44336;
+$error-hover: darkred;
 $success-color: #4caf50;
 $success-border: #388e3c;
 $info-color: #2196f3;
@@ -40,8 +41,5 @@ $error-gradient: linear-gradient(90deg, #f44336, #e57373);
 $close-btn-size: 16px;
 $progress-height: 4px;
 $progress-color: rgba(255,255,255,0.9);
-$navbar-bg: #0c4a6e;
-$footer-bg: #0c4a6e;
-$navbar-bg: #0c4a6e;     // Main navbar color
 $dropdown-bg: #0e547a;   // Slightly lighter blue for dropdown
 $dropdown-hover: #0f628f;

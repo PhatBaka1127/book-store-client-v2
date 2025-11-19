@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
+import { CartComponent } from './features/cart/cart.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/auth", pathMatch: "full" },
@@ -11,7 +13,15 @@ const routes: Routes = [
     path: 'books',
     loadChildren: () => import('./features/books/book.module').then(m => m.BookModule) 
   },
-  { path: '**', redirectTo: 'auth/login' }
+    {
+    path: "",
+    canActivate: [AuthGuard],
+    children: [
+      { path: "cart", component: CartComponent },
+    ],
+  },
+  // Wild card/ default must be in the end
+  { path: '**', redirectTo: 'auth/login' },
 ];
 
 @NgModule({
