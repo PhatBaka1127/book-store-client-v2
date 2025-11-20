@@ -1,0 +1,79 @@
+<div class="order-history-container">
+  <h2>🧾 Order History</h2>
+
+ <div class="filter-section">
+    <label>
+      <span>Start Date <input type="date" [(ngModel)]="startTime" /> </span>
+    </label>
+
+    <label>
+      <span>End Date <input type="date" [(ngModel)]="endTime" /></span>
+    </label>
+
+    <button (click)="onFilterChange()">Apply Filter</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">⏳ Loading...</div>
+
+  <table *ngIf="!loading && orders.length" class="orders-table">
+    <thead>
+      <tr>
+        <th (click)="changeSort('id')">
+          ID
+          <span *ngIf="sortField === 'id'">
+          </span>
+        </th>
+        <th (click)="changeSort('createdDate')">
+          Order Date
+          <span *ngIf="sortField === 'createdDate'">
+          </span>
+        </th>
+        <th (click)="changeSort('totalPrice')">
+          Total Price
+          <span *ngIf="sortField === 'totalPrice'">
+          </span>
+        </th>
+        <th (click)="changeSort('quantity')">
+          Quantity
+          <span *ngIf="sortField === 'quantity'">
+          </span>
+        </th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.createdDate | date: "dd/MM/yyyy HH:mm" }}</td>
+        <td>{{ order.totalPrice | number }}₫</td>
+        <td>{{ order.quantity }}</td>
+        <td>
+          <span class="status" [class.success]="order.status === 'DELIVERED'"
+                [class.pending]="order.status === 'ORDERED'"
+                [class.failed]="order.status === 'FAILED'">
+            {{ order.status }}
+          </span>
+        </td>
+        <td>
+          <button class="detail-btn" (click)="viewOrderDetail(order.id)">
+            🔍 Detail
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+      ⬅ Prev
+    </button>
+    <span>Page {{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      Next ➡
+    </button>
+  </div>
+
+  <p *ngIf="!loading && orders.length === 0">🙁 No orders found.</p>
+</div>

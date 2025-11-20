@@ -1,0 +1,78 @@
+@import '../../../../../styles.scss';
+
+.order-history-container {
+  @extend %card-global;
+  max-width: 900px;
+  margin: 40px auto;
+  animation: fadeIn 0.3s ease;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+/* Bộ lọc */
+.filter-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+  }
+
+  input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    &:focus {
+      border-color: #0078d7;
+    }
+  }
+
+  /* Button reuse */
+  button {
+    @extend %button-global;
+    width: 100px;
+  }
+}
+
+table {
+  @extend %global-table;
+
+  .detail-btn {
+    background-color: $primary-color;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #00976d;
+    }
+  }
+}
+
+/* Pagination dùng chung */
+.pagination {
+  margin-top: 20px;
+  @extend %pagination;
+}
+
+button {
+  @extend %button-global;
+  width: auto; // override if needed
+  padding: 8px 15px;
+}
+
+button[disabled] {
+  background-color: #aaa !important;
+  cursor: not-allowed;
+}

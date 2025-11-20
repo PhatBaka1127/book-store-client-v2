@@ -7,9 +7,10 @@ import { BookRoutingModule } from "../books/books-routing.module";
 import { CartComponent } from "./pages/cart/cart.component";
 import { CheckoutComponent } from "./pages/checkout/checkout.component";
 import { OrderRoutingModule } from "./order-routing.module";
+import { ListOrderComponent } from "./pages/list-order/list-order.component";
 
 @NgModule({
-  declarations: [CartComponent, CheckoutComponent],
+  declarations: [CartComponent, CheckoutComponent, ListOrderComponent],
   imports: [CommonModule, OrderRoutingModule, RouterModule, SharedModule],
 })
 export class OrderModule {}

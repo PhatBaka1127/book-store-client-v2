@@ -17,7 +17,7 @@ export class ListBookComponent implements OnInit {
   userRole: number | null = null;
   currentPage = 1;
   totalPages = 1;
-  pageSize = 20;
+  pageSize = 10;
   totalItems = 0;
   categories: CategoryResponse[] = [];
   filter = { name: "", categoryId: "" };
@@ -88,7 +88,7 @@ export class ListBookComponent implements OnInit {
   }
 
   goToDetail(bookId: number) {
-    this.router.navigate(["/books/book-detail", bookId]);
+    this.router.navigate(["/books/", bookId]);
   }
 
   applyFilter() {
