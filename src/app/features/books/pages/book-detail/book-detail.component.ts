@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
+import { delay } from "rxjs";
 import { BookResponse } from "src/app/core/models/book.model";
 import { CartItemCookie } from "src/app/core/models/cart.model";
 import { BookService } from "src/app/core/services/book.service";
@@ -14,6 +15,7 @@ import { ToastService } from "src/app/core/services/toast.service";
 export class BookDetailComponent implements OnInit {
   book: BookResponse | null = null;
   userRole: number | null = null;
+  loading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +25,7 @@ export class BookDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     const userCookie = this.cookieService.get("user");
     if (userCookie) {
       try {
@@ -32,10 +35,18 @@ export class BookDetailComponent implements OnInit {
     }
 
     const bookId = Number(this.route.snapshot.paramMap.get("id"));
-    this.bookService.getBookById(bookId).subscribe({
-      next: (res) => (this.book = res),
-      error: (err) => console.error(err),
-    });
+    this.bookService
+      .getBookById(bookId)
+      .subscribe({
+        next: (res) => {
+          this.book = res;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error(err)
+          this.loading = false;
+        },
+      });
   }
 
   addToCart() {

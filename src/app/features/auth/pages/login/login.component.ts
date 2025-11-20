@@ -69,7 +69,7 @@ export class LoginComponent {
         this.loading = false;
 
         if (value.role === 0) {
-          this.router.navigate(["/books/list-book"]);
+          this.router.navigate(["/books"]);
         } 
       },
       error: (res: ErrorResponse) => {

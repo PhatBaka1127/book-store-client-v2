@@ -12,6 +12,7 @@ import { BookService } from 'src/app/core/services/book.service';
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   total = 0;
+  loading = true;
 
   constructor(
     private cookieService: CookieService,
@@ -28,8 +29,12 @@ export class CartComponent implements OnInit {
         next: book => {
           this.cartItems.push({ ...item, book });
           this.calculateTotal();
+          this.loading = false;
         },
-        error: () => console.error('Failed to load book', item.bookId)
+        error: () => {
+          console.error('Failed to load book', item.bookId);
+          this.loading = false;
+        }
       });
     });
   }

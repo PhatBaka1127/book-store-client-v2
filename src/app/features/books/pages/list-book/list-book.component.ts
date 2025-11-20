@@ -45,21 +45,23 @@ export class ListBookComponent implements OnInit {
   }
 
   loadCategories(): void {
+    this.loading = true;
+
     this.categoryService.getCategories().subscribe({
       next: (res) => {
         this.categories = res;
         this.loadBooks();
+        this.loading = false;
       },
       error: (err) => {
         console.error("Failed to load categories:", err);
         this.loadBooks();
+        this.loading = false;
       },
     });
   }
 
   loadBooks(page: number = 1): void {
-    this.loading = true;
-
     this.bookService
       .getBooks(page, this.pageSize, this.filter.name, this.filter.categoryId)
       .subscribe({

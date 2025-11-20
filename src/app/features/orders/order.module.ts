@@ -8,9 +8,15 @@ import { CartComponent } from "./pages/cart/cart.component";
 import { CheckoutComponent } from "./pages/checkout/checkout.component";
 import { OrderRoutingModule } from "./order-routing.module";
 import { ListOrderComponent } from "./pages/list-order/list-order.component";
+import { OrderDetailComponent } from "./pages/order-detail/order-detail.component";
 
 @NgModule({
-  declarations: [CartComponent, CheckoutComponent, ListOrderComponent],
+  declarations: [
+    CartComponent,
+    CheckoutComponent,
+    ListOrderComponent,
+    OrderDetailComponent,
+  ],
   imports: [CommonModule, OrderRoutingModule, RouterModule, SharedModule],
 })
 export class OrderModule {}

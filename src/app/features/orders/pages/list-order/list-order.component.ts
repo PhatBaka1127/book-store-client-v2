@@ -72,7 +72,7 @@ export class ListOrderComponent implements OnInit {
   }
 
   viewOrderDetail(orderId: number): void {
-    this.router.navigate([`/order/${orderId}`]);
+    this.router.navigate([`/orders/${orderId}`]);
   }
 
   onFilterChange(): void {

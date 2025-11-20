@@ -7,6 +7,7 @@ import { CreateOrderRequest } from 'src/app/core/models/order.model';
 import { OrderService } from 'src/app/core/services/order.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { ResponseMessage, ErrorResponse } from 'src/app/core/models/response.model';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -16,7 +17,7 @@ import { ResponseMessage, ErrorResponse } from 'src/app/core/models/response.mod
 export class CheckoutComponent implements OnInit {
   cartItems: { book: BookResponse; quantity: number }[] = [];
   total = 0;
-
+  loading = true;
   phoneNumber = '';
   address = '';
 
@@ -28,14 +29,16 @@ export class CheckoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     const cartCookie = this.cookieService.get('cart');
     const cart: CartItemCookie [] = cartCookie ? JSON.parse(cartCookie) : [];
 
     // Fetch all book info for cart items
     cart.forEach(item => {
-      this.bookService.getBookById(item.bookId).subscribe(book => {
+      this.bookService.getBookById(item.bookId).pipe(delay(2000)).subscribe(book => {
         this.cartItems.push({ book, quantity: item.quantity });
         this.calculateTotal();
+        this.loading = false;
       });
     });
   }

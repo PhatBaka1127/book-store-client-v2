@@ -77,3 +77,7 @@
 
   <p *ngIf="!loading && orders.length === 0">🙁 No orders found.</p>
 </div>
+
+<div class="loading-overlay" *ngIf="loading">
+  <app-toast-spinner [message]="'Loading'" [visible]="loading"></app-toast-spinner>
+</div>

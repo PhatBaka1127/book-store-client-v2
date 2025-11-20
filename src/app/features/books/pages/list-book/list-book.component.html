@@ -42,3 +42,7 @@
       </button>
     </div>
   </div>
+
+<div class="loading-overlay" *ngIf="loading">
+  <app-toast-spinner [message]="'Loading'" [visible]="loading"></app-toast-spinner>
+</div>
