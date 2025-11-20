@@ -1,10 +1,8 @@
+@import "../../../../../styles.scss";
+
 .order-detail-container {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  @extend %container;
+  @extend %card-global;
 
   h2 {
     margin-bottom: 10px;
@@ -18,33 +16,23 @@
     color: #555;
   }
 
+  /* ===========================
+     Table (Reuse global table)
+     =========================== */
   table {
-    width: 100%;
-    border-collapse: collapse;
+    @extend %global-table;
     margin-top: 15px;
-
-    th, td {
-      padding: 10px 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f5f5f5;
-      color: #333;
-    }
 
     td img {
       width: 50px;
       height: auto;
       border-radius: 4px;
     }
-
-    tr:hover {
-      background-color: #fafafa;
-    }
   }
 
+  /* ===========================
+     Order Summary
+     =========================== */
   .order-summary {
     margin-top: 20px;
     display: flex;
@@ -57,7 +45,9 @@
     }
   }
 
-  /* Responsive nhỏ hơn 600px */
+  /* ===========================
+     Responsive (mobile view)
+     =========================== */
   @media (max-width: 600px) {
     table, thead, tbody, th, td, tr {
       display: block;
@@ -77,6 +67,7 @@
         content: attr(data-label);
         font-weight: bold;
         flex: 1;
+        text-align: left;
       }
     }
   }
